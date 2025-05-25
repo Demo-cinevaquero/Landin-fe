@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 7%; /* Very Dark Blue/Almost Black */
+    --foreground: 220 20% 93%; /* Light Cool Grey */
+
+    --card: 220 30% 10%; /* Slightly lighter than background */
+    --card-foreground: 220 20% 93%;
+
+    --popover: 220 30% 9%;
+    --popover-foreground: 220 20% 93%;
+
+    --primary: 22 100% 50%; /* Neon Orange (#ff5c00) */
+    --primary-foreground: 22 100% 10%; /* Very Dark Orange for text on primary */
+
+    --secondary: 220 30% 15%;
+    --secondary-foreground: 220 20% 93%;
+
+    --muted: 220 30% 12%;
+    --muted-foreground: 220 20% 70%; /* Dimmer light grey */
+
+    --accent: 327 100% 54%; /* Neon Pink/Fuchsia (#ff007f) */
+    --accent-foreground: 327 100% 10%; /* Very Dark Pink for text on accent */
+
+    --destructive: 0 84% 60%; /* Bright Red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 20%; /* Subtle dark border */
+    --input: 220 30% 15%;
+    --ring: 22 100% 50%; /* Neon Orange for focus rings */
+
+    --radius: 0.75rem; /* Slightly more rounded */
+
+    /* Chart colors for the neon theme */
+    --chart-1: 22 100% 50%; /* Neon Orange */
+    --chart-2: 327 100% 54%; /* Neon Pink */
+    --chart-3: 180 100% 50%; /* Neon Cyan/Teal */
+    --chart-4: 50 100% 50%;  /* Neon Yellow/Lime */
+    --chart-5: 270 100% 60%; /* Neon Purple */
+
+    /* Sidebar colors for the neon theme */
+    --sidebar-background: 220 30% 9%;
+    --sidebar-foreground: 220 20% 88%;
+    --sidebar-primary: 22 100% 50%;
+    --sidebar-primary-foreground: 22 100% 10%;
+    --sidebar-accent: 327 100% 54%;
+    --sidebar-accent-foreground: 327 100% 10%;
+    --sidebar-border: 220 30% 18%;
+    --sidebar-ring: 22 100% 50%;
+  }
+
+  /* No .dark class needed as :root is now the dark neon theme */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground; /* font-sans will be applied via layout.tsx and tailwind.config.ts */
+    background-color: hsl(var(--background)); /* Fallback */
+    /* Subtle radial gradient with neon colors */
+    background-image: radial-gradient(ellipse at bottom right, 
+                                      hsl(var(--primary) / 0.20) 0%, /* Neon orange glow */
+                                      hsl(var(--accent) / 0.10) 35%,  /* Neon pinkish glow */
+                                      hsl(var(--background)) 70%);   /* Fading to dark background */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures gradient covers viewport and doesn't scroll with content */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    flex-grow: 1;
+  }
+}
